@@ -14,15 +14,29 @@ Ext.application({
     name: 'DietonApp',
 
     requires: [
-        'Ext.MessageBox'
+        'Ext.LoadMask',
+        'Ext.MessageBox',
+        'DietonApp.overrides.MessageBox'
     ],
 
-    views: [
-        'Main'
+    controllers : [
+        'Router',
+        'Home'
     ],
 
     stores : [
-        'Config'
+        'Config',
+        'History',
+        'User'
+    ],
+    models: [
+        'User',
+        'Config',
+        'History'
+    ],
+
+    views : [
+        'ux.LoadingMask'
     ],
 
     icon: {
@@ -49,10 +63,6 @@ Ext.application({
         return Ext.getStore("Config").first();
     },
     /*************Current User*******************/
-    currentUser    : null,
-    setCurrentUser : function (currentUser) {
-        this.currentUser = currentUser;
-    },
     getCurrentUser : function () {
         if(Ext.getStore("User").getCount() === 0) Ext.getStore("User").load();
         return Ext.getStore("User").first();
@@ -70,9 +80,44 @@ Ext.application({
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
+        window.initMaps();
+    },
 
-        // Initialize the main view
-        Ext.Viewport.add(Ext.create('DietonApp.view.Main'));
+    /*************Loading Message****************/
+    ldMask  : null,
+    loading : false,
+    getLdMask : function () {
+        return this.ldMask;
+    },
+    setLdMask : function (value) {
+        this.ldMask = value;
+    },
+    isLoading : function () {
+        return this.loading;
+    },
+    setLoading : function (value) {
+        this.loading = value;
+    },
+    loadingMask : function (b, loadingMessage) {
+        loadingMessage = loadingMessage || "Cargando...";
+
+        this.setLoading(b);
+
+        if(b){//show mask or change message value
+           if(this.getLdMask() !== null){//if the loading mask is active then change the message
+              this.getLdMask().setMessage(loadingMessage);
+           }else{
+                Ext.Viewport.setMasked({
+                    xtype   : 'loadingmask',
+                    message : loadingMessage
+                });
+                this.setLdMask(Ext.Viewport.getMasked());
+            }
+        }else{//hide mask
+            var maskToDestroy = this.getLdMask();
+            this.setLdMask(null);
+            Ext.Viewport.setMasked(false);
+        }
     },
 
     onUpdated: function() {

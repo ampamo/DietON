@@ -73,6 +73,7 @@
                 android:configChanges="orientation|keyboardHidden"
                 android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
                 android:windowSoftInputMode="stateAlwaysHidden"
+                android:screenOrientation="portrait"
                 android:exported="false">
                 <intent-filter>
                     <action android:name="com.google.zxing.client.android.SCAN"/>
@@ -348,7 +349,7 @@
             <runs />
         </js-module>
     </platform>
-    
+
     <!-- BlackBerry 10 -->
     <platform name="blackberry10">
         <source-file src="src/blackberry10/index.js" target-dir="BarcodeScanner" />

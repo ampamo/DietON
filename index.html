@@ -2,6 +2,7 @@
 <html manifest="" lang="en-US">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://maps.googleapis.com http://world.openfoodfacts.org; ">
     <title>DietonApp</title>
     <style type="text/css">
          /**
@@ -51,6 +52,28 @@
     </style>
     <!-- The line below must be kept intact for Sencha Command to build your application -->
     <script id="microloader" type="text/javascript" src=".sencha/app/microloader/development.js"></script>
+    <script type="text/javascript">
+    window.onLoadGMaps = function () {
+      try{
+        var script  = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src  = 'resources/js/markerwithlabel_packed.js';
+        document.body.appendChild(script);
+      }catch(e){
+        JSON.stringify(e);
+      }
+    };
+    window.initMaps = function () {
+      try{
+        var script  = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src  = 'https://maps.googleapis.com/maps/api/js?v=3.exp&callback=onLoadGMaps';
+        document.body.appendChild(script);
+      }catch(e){
+        JSON.stringify(e);
+      }
+    };
+  </script>
 </head>
 <body>
     <div id="appLoadingIndicator">

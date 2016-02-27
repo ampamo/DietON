@@ -1,0 +1,65 @@
+.neutral-state {
+	background : url("../icons/backgrounds/Fondo-02.png");
+	background-size: cover;
+}
+.first-state {
+	background : url("../icons/backgrounds/Fondo-01.png");
+	background-size: cover;
+}
+.second-state {
+	background : url("../icons/backgrounds/Fondo-02.png");
+	background-size: cover;
+}
+.fourth-state {
+	background : url("../icons/backgrounds/Fondo-03.png");
+	background-size: cover;
+}
+.fifth-state {
+	background : url("../icons/backgrounds/Fondo-04.png");
+	background-size: cover;
+}
+.product-info{
+	background-color: rgba(47, 51, 20, 0.79);
+    color: #FFF;
+    font-size: 19px;
+}
+.product-info-buttons{
+	background-color: rgba(47, 51, 20, 0.59);
+}
+.puppet-first-state{
+	width  : 500px;
+	height : 800px;
+}
+.puppet-second-state{
+	width  : 450px;
+	height : 750px;
+}
+.puppet-fourth-state{
+	width  : 350px;
+	height : 650px;
+}
+.puppet-fifth-state{
+	width  : 300px;
+	height : 600px;
+}
+.puppet-neutral-state{
+	width  : 400px;
+	height : 700px;
+}
+.tickIcon{
+	background-size: cover;
+}
+.button-ivan{
+	background: rgba(255, 255, 255, 0);
+    border: 0;
+}
+.button-ivan2{
+	background: rgba(105, 105, 57, 0.91);
+    /*border: 0;*/
+    -webkit-border-radius: none !important;
+    -moz-border-radius: none !important;
+    -ms-border-radius: none !important;
+    -o-border-radius: none !important;
+    border-radius: 0.4em none !important;
+}
+

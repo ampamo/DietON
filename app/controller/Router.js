@@ -6,7 +6,7 @@ Ext.define('DietonApp.controller.Router', {
             //'ux.BackButton'
         ],
         before : {
-            showHome            : [ 'authenticate', 'showHome', 'saveRoute' ],
+            showHome                 : [ 'authenticate', 'showHome', 'saveRoute' ],
             //showChangePassword     : [ 'authenticate', 'saveRoute' ],
             //showCreateMobileTopup  : [ 'authenticate', 'saveRoute' ],
             //showMobileTopupList    : [ 'authenticate', 'saveRoute' ],
@@ -22,7 +22,7 @@ Ext.define('DietonApp.controller.Router', {
             //'logout'             : 'signOut',
             //'accounts'           : 'showAccounts',
             'createAccount'      : 'showCreateUser',
-            'user/:id'           : 'showEditUser',
+            'user/:id'           : 'showEditUser'
             //'changePassword'     : 'showChangePassword',
             //'createMobileTopup'  : 'showCreateMobileTopup',
             //'mobileTopupList'    : 'showMobileTopupList',
@@ -44,13 +44,26 @@ Ext.define('DietonApp.controller.Router', {
     },
 
     createFakeUser : function () {
-
+        var currentDateAtZeroHours = new Date();
+        currentDateAtZeroHours.setHours(0);
+        var user = Ext.create('DietonApp.model.User', {
+            gender            : 'FEMALE',
+            birthday          : new Date(2008, 0, 1),
+            weight            : 28,
+            height            : 115,
+            lastReStartAt     : currentDateAtZeroHours,
+            score             : 10,
+            currentSugarLevel : 0
+        });
+        user.save();
     },
 
     authenticate : function (action) {
         var me = this;
         if(!me.getApplication().getCurrentUser()){
-            me.getApplication().redirectTo('createAccount');
+            me.createFakeUser();
+            action.resume();
+            //me.getApplication().redirectTo('createAccount');
         }else{
             action.resume();
         }
@@ -115,12 +128,12 @@ Ext.define('DietonApp.controller.Router', {
     showCreateUser : function () {
         this.showView(Ext.create('DietonApp.view.CreateUser'));
     },
-    showEditUser: function (user_id) {
+    /*showEditUser: function (user_id) {
         var user = Ext.getStore('User').findRecord('id', user_id);
         var editUserView = Ext.create('RCargas.view.EditUser');
         editUserView.down('useraccountform').setRecord(user);
         this.showView(editUserView);
-    },
+    },*/
     /**************Main view***************/
     showView : function (view) {
         this.cleanViewPort(true);
@@ -133,7 +146,7 @@ Ext.define('DietonApp.controller.Router', {
      */
     cleanViewPort : function (destroy) {
         var me         = this,
-            mainMenuId = me.getApplication().getController('MainMenu').getMainMenuId();
+            mainMenuId = null;//me.getApplication().getController('MainMenu').getMainMenuId();
         Ext.Viewport.getItems().each(function ( item , index ) {
             if((item.getItemId() !== mainMenuId)){//remove if it isn't main menu
                 if(item.getId() === Ext.Msg.getId()){//if item is msg

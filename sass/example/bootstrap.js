@@ -1883,7 +1883,17 @@ Ext.Loader.addClassPathMappings({
 });
 
 Ext.ClassManager.addNameAlternateMappings({
-  "DietonApp.view.Main": [],
+  "DietonApp.controller.Home": [],
+  "DietonApp.controller.Router": [],
+  "DietonApp.model.Config": [],
+  "DietonApp.model.History": [],
+  "DietonApp.model.User": [],
+  "DietonApp.overrides.MessageBox": [],
+  "DietonApp.store.Config": [],
+  "DietonApp.store.History": [],
+  "DietonApp.store.User": [],
+  "DietonApp.view.Home": [],
+  "DietonApp.view.ux.LoadingMask": [],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
   "Ext.AbstractPlugin": [],
@@ -2507,8 +2517,24 @@ Ext.ClassManager.addNameAlternateMappings({
 });
 
 Ext.ClassManager.addNameAliasMappings({
-  "DietonApp.view.Main": [
-    "widget.main"
+  "DietonApp.controller.Home": [],
+  "DietonApp.controller.Router": [],
+  "DietonApp.model.Config": [],
+  "DietonApp.model.History": [
+    "model.History"
+  ],
+  "DietonApp.model.User": [
+    "model.User"
+  ],
+  "DietonApp.overrides.MessageBox": [],
+  "DietonApp.store.Config": [],
+  "DietonApp.store.History": [],
+  "DietonApp.store.User": [],
+  "DietonApp.view.Home": [
+    "widget.homeview"
+  ],
+  "DietonApp.view.ux.LoadingMask": [
+    "widget.loadingmask"
   ],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
