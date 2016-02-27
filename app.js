@@ -21,6 +21,10 @@ Ext.application({
         'Main'
     ],
 
+    stores : [
+        'Config'
+    ],
+
     icon: {
         '57': 'resources/icons/Icon.png',
         '72': 'resources/icons/Icon~ipad.png',
@@ -37,6 +41,30 @@ Ext.application({
         '748x1024': 'resources/startup/748x1024.png',
         '1536x2008': 'resources/startup/1536x2008.png',
         '1496x2048': 'resources/startup/1496x2048.png'
+    },
+
+    /*************Config*******************/
+    getConfig : function (){
+        if(Ext.getStore("Config").getCount() === 0) Ext.getStore("Config").load();
+        return Ext.getStore("Config").first();
+    },
+    /*************Current User*******************/
+    currentUser    : null,
+    setCurrentUser : function (currentUser) {
+        this.currentUser = currentUser;
+    },
+    getCurrentUser : function () {
+        if(Ext.getStore("User").getCount() === 0) Ext.getStore("User").load();
+        return Ext.getStore("User").first();
+    },
+    /********************************************/
+    getActiveView : function () {
+        return Ext.Viewport.getActiveItem();
+    },
+    getActiveRoute: function () {
+        var history = this.getHistory(),
+            actions = history.getActions();
+        return actions[actions.length - 1].config;
     },
 
     launch: function() {
