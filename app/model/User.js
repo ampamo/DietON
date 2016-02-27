@@ -5,7 +5,7 @@ Ext.define('DietonApp.model.User', {
     config: {
         fields: [
             {name: 'gender',  type: 'String'},
-            {name: 'age',   type: 'int'},
+            {name: 'birthDate',   type: 'date', dateFormat: 'time'},
             {name: 'weight', type: 'float'},
             {name: 'height', type: 'float'},
             {name: 'lastReStart', type: 'date', dateFormat: 'time'},
