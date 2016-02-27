@@ -1,18 +1,21 @@
 {
-    "builds"      : {
-      "android" : {
-        "id"       : "f4b0ce97-082b-4ec8-91a0-605fd0a141ed",
-        "packager" : "cordova",
-        "name"     : "RemoteSales",
-        "cordova"  : {
-          "config" : {
-            "platforms" : "android",
-            "name"      : "DietON",
-            "id"        : "co.dieton.dieton"
-          }
+    "builds": {
+        "web": {"default": true},
+        "native": {
+            "packager": "cordova",
+            "cordova" : {
+                "config": {
+                    // Uncomment the line below and add the platforms you wish to build for
+                    "platforms": "android",
+
+                    "id": "co.dieton.dieton",
+                    "name": "DietON"
+                }
+            }
         }
-      }
-    }
+    },
+
+                
     /**
      * The application's namespace, used by Sencha Command to generate classes
      */
