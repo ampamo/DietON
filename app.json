@@ -1,4 +1,20 @@
 {
+    "builds"      : {
+      "android" : {
+        "id"       : "f4b0ce97-082b-4ec8-91a0-605fd0a141ed",
+        "packager" : "cordova",
+        "name"     : "RemoteSales",
+        "cordova"  : {
+          "config" : {
+            "platforms" : "android",
+            "name"      : "DietON",
+            "id"        : "co.dieton.dieton"
+          }
+        }
+      }
+    },
+
+
     /**
      * The application's namespace, used by Sencha Command to generate classes
      */
@@ -37,7 +53,7 @@
      *                                      //  - "delta" to enable over-the-air delta update for this file
      *                                      //  - "full" means full update will be made when this file changes
      *          "x-bootstrap": true         // (Optional)
-     *                                      // Indicates a development mode only dependency.  
+     *                                      // Indicates a development mode only dependency.
      *                                      // These files will not be copied into the build directory or referenced
      *                                      // in the generate app.json manifest for the micro loader.
      *
@@ -131,7 +147,7 @@
      */
     "requires": [
     ],
-    
+
     /**
      * Controls for localStorage caching
      *   "cache": {
